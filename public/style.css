@@ -1,0 +1,28 @@
+body {
+    background-color: #f8f8f8;
+}
+
+.container {
+    margin-top: 5rem;
+}
+
+#notes_container {
+    margin: 1rem auto;
+}
+
+.single_note {
+    float: left; 
+    margin: 1rem;
+}
+
+#welcome {
+    text-align: center;
+    color: #333333;
+    font-size: 1.8rem;
+}
+
+#instructions {
+    text-align: center;
+    color: #999999;
+    font-size: 1rem;
+}
