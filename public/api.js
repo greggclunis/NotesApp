@@ -9,15 +9,16 @@ function getRequest(event) {
     .then(function(data) {
 
            for (var i in data) {
-                document.getElementById("notes_container").innerHTML += 
+                let textExcerpt = data[i].noteText.slice(0, 100);
+               document.getElementById("notes_container").innerHTML += 
                     
-                    '<div class="card single_note" style="">' +
+                    '<div class="card single_note">' +
                     '<img src="https://i1.wp.com/tinyleaps.fm/wp-content/uploads/2020/05/uqyhjogyxyy-scaled.jpg" class="card-img-top" alt="...">' +
                     '<div class="card-body">' +
                     '<p class="card-title">' + 
                     data[i].noteTitle + 
                     '</p> <p class="card-text">'+
-                    data[i].noteText + '</div> </div>'
+                    textExcerpt + '<br /><br />View Note</div> </div>'
                     
             } 
             
@@ -30,7 +31,6 @@ function getRequest(event) {
 var searchContent = document.getElementById('search');
 searchContent.addEventListener('submit', getByTitle);
 
-
 function getByTitle(event) {  
     event.preventDefault();
     
@@ -40,16 +40,17 @@ function getByTitle(event) {
     fetch(`/notes/search?q=${noteName}`)
     .then((response) => response.json())
     .then(function(data) {
-        for (var i in data) {        
+        for (var i in data) {
+            let textExcerpt = data[i].noteText.slice(0, 100);
             document.getElementById("notes_container").innerHTML += 
                     
-                    '<div class="card single_note" style="width: 18rem;">' +
+                    '<div class="card single_note">' +
                     '<img src="https://i1.wp.com/tinyleaps.fm/wp-content/uploads/2020/05/uqyhjogyxyy-scaled.jpg" class="card-img-top" alt="...">' +
                     '<div class="card-body">' +
-                    '<h5 class="card-title">' + 
+                    '<p class="card-title">' + 
                     data[i].noteTitle + 
-                    '</h5> <p class="card-text">'+
-                    data[i].noteText + '</div> </div>'
+                    '</p> <p class="card-text">'+
+                    textExcerpt + '<br /><br />View Note</div> </div>'
             
         }
    
@@ -58,7 +59,6 @@ function getByTitle(event) {
 }
 
 //Create new note
-
 var createNote = document.getElementById('create_note');
 createNote.addEventListener('submit', newNote);
 
@@ -85,6 +85,26 @@ function newNote(event, post) {
         .then (res => console.log(res))
         .then (error => console.error('error: ', error));
 }
+
+
+//Edit note
+const viewNote = document.getElementsByClassName('single_note');
+
+
+for (var i in viewNote) {
+    console.log(viewNote);
+}
+
+/*
+noteArray.forEach(function(viewNote) {
+    noteArray.addEventListener('click', openNote);
+});
+
+function openNote(event) {
+    console.log(this.id);
+}
+*/
+
 
 
 
