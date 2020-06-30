@@ -21,10 +21,6 @@ router.get('/search', findNotes, async(req, res) => {
     res.json(res.foundNotes);
 });
 
-//GET SINGLE
-router.get('/:id', getNote, async(req, res) => {
-        res.json(res.note);
-});
 
 
 //POST

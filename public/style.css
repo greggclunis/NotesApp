@@ -6,12 +6,17 @@ body {
     margin-top: 5rem;
 }
 
+
 #notes_container {
     margin: 1rem auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
 .single_note {
-    float: left; 
+    flex: 1 0 30%;
+    max-width: 346px;
     margin: 1rem;
 }
 
@@ -25,4 +30,20 @@ body {
     text-align: center;
     color: #999999;
     font-size: 1rem;
+}
+
+#create_note_start {
+    display: block;
+    margin: 1rem auto 0 auto; 
+}
+
+.newNoteStyle {
+    border: none;
+    outline: none;
+}
+
+#newNoteText {
+    width: 29rem;
+    height: 22rem;
+    resize: none;
 }
