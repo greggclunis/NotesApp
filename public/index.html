@@ -25,7 +25,7 @@
     
 <!-- Button trigger modal -->
     <button id="create_note_start" type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-success">Create Note</button>
-<!-- Modal -->
+<!-- New Post Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -49,7 +49,31 @@
         </div>
       </div>
     </div>    
-    
+ 
+<!-- Edit Post Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        <form id="edit_note">
+          <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLabel">
+            <input class="newNoteStyle" id="editNoteTitle" type="text" placeholder="Title" name="noteTitle" />
+              
+            </h3>
+          </div>
+          <div class="modal-body ">
+            <textarea placeholder="Enter your note here..." class="newNoteStyle" id="newNoteText" name="noteText"></textarea>
+          
+            </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button name="create_note" method="PUT" class="btn btn-success">Save Changes</button>
+              
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
     
 <!--Content Container-->
     
