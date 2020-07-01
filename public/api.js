@@ -1,3 +1,5 @@
+var url = window.location.href.split('?')[0];
+
 //DISPLAY ALL NOTES ON LOAD
 var loadContent = document.getElementById('notes_container');
 window.addEventListener('load', getRequest);
@@ -9,7 +11,7 @@ function getRequest(event) {
     .then(function(data) {
         noteData = data;
            for (var i in data) {
-                let textExcerpt = data[i].noteText.slice(0, 200);
+                let textExcerpt = data[i].noteText.slice(0, 250);
                document.getElementById("notes_container").innerHTML += 
                     
                     '<a data-toggle="modal" data-target="#editModal"><div class="card single_note" onClick="grabId(this)" id="note_'+ i +'">' +
@@ -38,7 +40,7 @@ function getByTitle(event) {
     .then((response) => response.json())
     .then(function(data) {
            for (var i in data) {
-                let textExcerpt = data[i].noteText.slice(0, 200);
+                let textExcerpt = data[i].noteText.slice(0, 250);
                document.getElementById("notes_container").innerHTML += 
                     
                     '<a data-toggle="modal" data-target="#editModal"><div class="card single_note" onClick="grabId(this)" id="note_'+ i +'">' +
@@ -57,9 +59,12 @@ function getByTitle(event) {
 var createNote = document.getElementById('create_note');
 createNote.addEventListener('submit', newNote);
 
+
 function newNote(event, post) {
+    event.preventDefault();
     var noteTitle = event.target.noteTitle.value;
     var noteText = event.target.noteText.value;
+
     
     post = {
         noteTitle: noteTitle,
@@ -77,15 +82,17 @@ function newNote(event, post) {
     return fetch('/notes', options) 
         .then (res => res.json())
         .then (res => console.log(res))
-        .then (error => console.error('error: ', error));
+        .then (error => console.error('error: ', error))
+        .then(window.location = url);
 }
 
 
 //EDIT NOTE
 var editNoteId;
+
 //Get data from target note and print to modal screen 
 function grabId(card) {
-    
+  
 const openNote = document.getElementById(card.id);
 const noteTitle = document.getElementById('editNoteTitle');
 const noteText = document.getElementById('editNoteText');
@@ -104,6 +111,8 @@ const findInt = /[0-9]/;
 const editPost = document.getElementById('edit_note');
 editPost.addEventListener('submit', submitEdit);
 function submitEdit(event) {
+    event.preventDefault();
+    
     var noteTitle = event.target.noteTitle.value;
     var noteText = event.target.noteText.value;
 
@@ -124,7 +133,8 @@ function submitEdit(event) {
 
     return fetch(URL, options)
     .then(response => response.json())
-    .then(data => console.log('note to update: ', data));
+    .then(data => console.log('note to update: ', data))
+    .then(window.location = url);
 }
 
 

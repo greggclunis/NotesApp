@@ -23,7 +23,8 @@ hr {
     flex: 1 0 30%;
     max-width: 346px;
     min-width: 346px;
-    min-height: 172px;
+    min-height: 250px;
+    max-height: 250px;
     margin: 1rem;
 }
 
